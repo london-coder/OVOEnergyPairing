@@ -19,7 +19,8 @@ class ConsumptionTests extends FlatSpec with Matchers {
 	}
 
 	def feedback(months: Seq[Double]): Unit = {
-		var monthNames = Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+		var monthNames = Array("Jan", "Feb", "Mar", "Apr", "May", 
+			              "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 		for ( (xs, i) <- months.view.zipWithIndex ) {
 			val m = monthNames(i)
 			val fxs = f"$xs%.2f"
