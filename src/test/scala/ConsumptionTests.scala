@@ -14,11 +14,16 @@ class ConsumptionTests extends FlatSpec with Matchers {
 		val result = Consumption.aggregateMonthlyConsumption(daily)
 
 		assert(result.size === 12)
-		// for feedback
-		for ( (xs,i) <- result.view.zipWithIndex ) {
-			val ix = i+1
+		// for visual feedback
+		feedback(result)
+	}
+
+	def feedback(months: Seq[Double]): Unit = {
+		var monthNames = Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+		for ( (xs, i) <- months.view.zipWithIndex ) {
+			val m = monthNames(i)
 			val fxs = f"$xs%.2f"
-			println(s"Aggregate for month $ix: $fxs")
+			println(s"Energy use for $m: $fxs")
 		}
 	}
 }
