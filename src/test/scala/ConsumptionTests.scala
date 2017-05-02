@@ -22,9 +22,8 @@ class ConsumptionTests extends FlatSpec with Matchers {
 		var monthNames = Array("Jan", "Feb", "Mar", "Apr", "May", 
 			              "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 		for ( (xs, i) <- months.view.zipWithIndex ) {
-			val m = monthNames(i)
 			val fxs = f"$xs%.2f"
-			println(s"Energy use for $m: $fxs")
+			println(s"Energy use for ${monthNames(i)}: $fxs")
 		}
 	}
 }
