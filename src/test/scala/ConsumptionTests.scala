@@ -8,22 +8,19 @@ class ConsumptionTests extends FlatSpec with Matchers {
 	}
 
 	"Annual consmption by month" must "have a size of 12" in {
-		val daily = DailySnapshotData.Snapshots.map {
-			case (a,b) => (ZonedDateTime.parse(a), b)
-		}
-		val result = Consumption.aggregateMonthlyConsumption(daily)
-
+		val result = Consumption.aggregateMonthlyConsumption(
+			DailySnapshotData.Snapshots map {
+				case (a, b) => (ZonedDateTime.parse(a), b)
+				})
 		assert(result.size === 12)
-		// for visual feedback
-		feedback(result)
+		
+		feedback(result)	// for visual feedback
 	}
 
 	def feedback(months: Seq[Double]): Unit = {
 		var monthNames = Array("Jan", "Feb", "Mar", "Apr", "May", 
 			              "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-		for ( (xs, i) <- months.view.zipWithIndex ) {
-			val fxs = f"$xs%.2f"
-			println(s"Energy use for ${monthNames(i)}: $fxs")
-		}
+		for ( (xs, i) <- months.view.zipWithIndex )
+			println(s"Energy use for ${monthNames(i)}: "+ "%.2f".format(xs))
 	}
 }
