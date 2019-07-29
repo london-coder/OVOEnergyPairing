@@ -14,11 +14,12 @@ class ConsumptionTests extends FlatSpec with Matchers {
 				})
 		result.size shouldBe 12
 		
-		feedback(result)	// for visual feedback
+		feedback(result)	// NOT part of the test, only for visual feedback
 	}
 
+	// function for human readable output
 	def feedback(months: Seq[Double]): Unit = {
-		var monthNames = Array("Jan", "Feb", "Mar", "Apr", "May", 
+		val monthNames = Array("Jan", "Feb", "Mar", "Apr", "May", 
 			              "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 		for ( (xs, i) <- months.view.zipWithIndex )
 			println(s"Energy use for ${monthNames(i)}: ${"%.2f".format(xs)}")
