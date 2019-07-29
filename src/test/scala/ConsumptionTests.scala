@@ -4,7 +4,7 @@ import java.time.ZonedDateTime
 class ConsumptionTests extends FlatSpec with Matchers {
 
 	"The size of test data" should "be 37" in {
-		assert(DailySnapshotData.Snapshots.size === 37)
+		DailySnapshotData.Snapshots.size shouldBe 37
 	}
 
 	"Annual consmption by month" must "have a size of 12" in {
@@ -12,7 +12,7 @@ class ConsumptionTests extends FlatSpec with Matchers {
 			DailySnapshotData.Snapshots map {
 				case (a, b) => (ZonedDateTime.parse(a), b)
 				})
-		assert(result.size === 12)
+		result.size shouldBe 12
 		
 		feedback(result)	// for visual feedback
 	}
@@ -21,6 +21,6 @@ class ConsumptionTests extends FlatSpec with Matchers {
 		var monthNames = Array("Jan", "Feb", "Mar", "Apr", "May", 
 			              "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 		for ( (xs, i) <- months.view.zipWithIndex )
-			println(s"Energy use for ${monthNames(i)}: "+ "%.2f".format(xs))
+			println(s"Energy use for ${monthNames(i)}: ${"%.2f".format(xs)}")
 	}
 }
