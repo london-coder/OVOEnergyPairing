@@ -11,7 +11,7 @@ class ConsumptionTests extends FlatSpec with Matchers {
 		val result = Consumption.aggregateMonthlyConsumption(
 			DailySnapshotData.Snapshots map {
 				case (a, b) => (ZonedDateTime.parse(a), b)
-				})
+			})
 		result.size shouldBe 12
 		
 		feedback(result)	// NOT part of the test, only for visual feedback
